@@ -1,0 +1,33 @@
+# Backup pesado de PostgreSQL (138MB, no se sube)
+sql/creditcard_fraud_backup.sql
+
+# Datasets pesados (superan el límite de 100MB de GitHub)
+# El dataset original está disponible en Kaggle (ver README para el link)
+data/raw/creditcard.csv
+data/processed/creditcard_clean.csv
+
+# Archivos temporales de Excel
+excel/~$*.xlsx
+
+# Archivos temporales de Jupyter
+notebooks/.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Archivos temporales de Python
+__pycache__/
+*.pyc
+
+# Archivos de sistema Windows
+Thumbs.db
+desktop.ini
+
+# Archivos temporales de Power BI
+powerbi/~$*.pbix
+
+# Archivos temporales/bloqueo de Tableau
+*.twbr
+*.twbl
+
+# Archivos de BI pesados (exceden el límite de 100MB de GitHub)
+excel/fraud_analysis_dashboard.xlsx
+powerbi/fraud_dashboard.pbix
