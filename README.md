@@ -60,6 +60,8 @@ Base de datos `creditcard_fraud`, tabla `transactions` (31 columnas: `time_secon
 
 Datos cargados vía Power Query, corrigiendo la configuración regional a "Inglés (EE.UU.)" para el separador decimal (el Excel en español interpreta la coma como decimal, lo cual rompía los valores de `Amount` importados desde el CSV). Se creó una columna calculada `Hour` con la fórmula `=RESIDUO(ENTERO(A2/3600);24)`, dos tablas dinámicas (Fraude vs No Fraude con suma/promedio/conteo, y Fraude por hora) y un dashboard con 2 gráficos + KPIs.
 
+📥 **[Descargar archivo .xlsx original](https://drive.google.com/drive/folders/1_PTyjPMLDwsZ608o2mcsE5hG7W4JXFbI?usp=drive_link)** (no incluido en el repo por exceder el límite de tamaño de GitHub)
+
 **Hallazgos:**
 - Réplica de los indicadores generales de fraude vs no fraude (monto, conteo) consistente con SQL.
 - ⚠️ **Discrepancia detectada:** al calcular la hora de mayor riesgo, Excel arrojó como resultado las horas **20 (0.35%)** y **14 (0.28%)**, resultados distintos a los obtenidos en SQL y Power BI (hora 2, 4, 3). Se documenta como limitación conocida — la causa más probable es un error en la fórmula de la columna calculada o en cómo la tabla dinámica agregó los datos. Ver sección "Hallazgos clave" para más contexto sobre por qué esto es, en sí mismo, un hallazgo valioso del proyecto.
@@ -73,6 +75,8 @@ Datos cargados vía Power Query, corrigiendo la configuración regional a "Ingl�
 ## ⚡ 4. Power BI — Dashboard con DAX
 
 Conectado vía CSV (corrigiendo configuración regional a inglés en Power Query). Se crearon 7 medidas DAX (Total Transacciones, Total Fraudes, Tasa de Fraude, Monto Promedio, Monto Promedio Fraude/No Fraude, Monto Total Fraude) y una columna calculada `Hour = MOD(INT(Time/3600), 24)`. Dashboard con 4 tarjetas KPI, gráfico de tasa de fraude por hora, histograma de `Amount`, matriz/mapa de calor Hour × Class y segmentador de Class.
+
+📥 **[Descargar archivo .pbix original](https://drive.google.com/file/d/1PDt1Rm7Rm4ZACE9Zv7Zzc0fQzwqXtZaJ/view?usp=drive_link)** (no incluido en el repo por exceder el límite de tamaño de GitHub)
 
 **Hallazgos:**
 - Total de transacciones analizadas: **273,965**.
